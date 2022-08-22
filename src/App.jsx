@@ -3,6 +3,7 @@ import styled from "styled-components";
 import GlobalStyle from "./components/globalStyles";
 import Search from "./components/search/search";
 import CurrentWeather from "./components/current-weather/current-weather";
+import HeaderBar from "./components/header";
 import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
 
 function App() {
@@ -28,12 +29,13 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  console.log(currentWeather);
-  console.log(forecast);
+  // console.log(currentWeather);
+  // console.log(forecast);
 
   return (
     <Container>
       <GlobalStyle />
+      <HeaderBar data={currentWeather} />
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
     </Container>
@@ -43,6 +45,6 @@ function App() {
 export default App;
 
 const Container = styled.div`
-  max-width: 1080px;
+  /* max-width: 1080px; */
   margin: 20px auto;
 `;

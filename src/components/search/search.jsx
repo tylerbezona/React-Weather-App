@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import axios from "axios";
+import styled from "styled-components";
 import { geoApiOptions, GEO_API_URL } from "../../api";
 import { AsyncPaginate } from "react-select-async-paginate";
 
@@ -14,7 +14,7 @@ const Search = ({ onSearchChange }) => {
 
   const loadOptions = (inputValue) => {
     return fetch(
-      `${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`,
+      `${GEO_API_URL}/cities?minPopulation=1000&namePrefix=${inputValue}`,
       geoApiOptions
     )
       .then((response) => response.json())
@@ -32,14 +32,22 @@ const Search = ({ onSearchChange }) => {
   };
 
   return (
-    <AsyncPaginate
-      placeholder="Search for city"
-      debounceTimeout={600}
-      value={search}
-      onChange={handleOnChange}
-      loadOptions={loadOptions}
-    />
+    <SearchStyle>
+      <AsyncPaginate
+        placeholder="Search for city"
+        debounceTimeout={600}
+        value={search}
+        onChange={handleOnChange}
+        loadOptions={loadOptions}
+      />
+    </SearchStyle>
   );
 };
 
 export default Search;
+
+const SearchStyle = styled.div`
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 10px;
+`;
