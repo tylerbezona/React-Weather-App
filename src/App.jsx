@@ -4,6 +4,7 @@ import GlobalStyle from "./components/globalStyles";
 import Search from "./components/search/search";
 import CurrentWeather from "./components/current-weather/current-weather";
 import HeaderBar from "./components/header";
+
 import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
     <Container>
       <GlobalStyle />
       <HeaderBar data={currentWeather} />
+
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
     </Container>
