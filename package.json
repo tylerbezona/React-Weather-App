@@ -11,6 +11,7 @@
     "react-accessible-accordion": "^5.0.0",
     "react-dom": "^18.2.0",
     "react-geolocated": "^4.0.3",
+    "react-parallax-tilt": "^1.7.60",
     "react-scripts": "5.0.1",
     "react-select-async-paginate": "^0.6.2",
     "styled-components": "^5.3.5",

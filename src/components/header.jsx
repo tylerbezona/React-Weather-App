@@ -47,7 +47,7 @@ const HeaderStyle = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: lightblue;
+  background-color: transparent;
   padding: 15px;
 
   .weather-icon {

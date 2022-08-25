@@ -1,49 +1,54 @@
 import * as React from "react";
 import styled from "styled-components";
+import Tilt from "react-parallax-tilt";
 
 const CurrentWeather = ({ data }) => {
   return (
-    <Weather>
-      <Top>
-        <div>
-          <City>{data.city}</City>
-          <WeatherDescription>{data.weather[0].description}</WeatherDescription>
-        </div>
-        <img
-          alt="weather"
-          className="weather-icon"
-          src={`icons/${data.weather[0].icon}.png`}
-        ></img>
-      </Top>
-      <Bottom>
-        <Temperature>{Math.round(data.main.temp)}°F</Temperature>
-        <Details>
-          <div className="parameter-row">
-            <span className="parameter-label top details">Details</span>
+    <Tilt tiltReverse={true}>
+      <Weather>
+        <Top>
+          <div>
+            <City>{data.city}</City>
+            <WeatherDescription>
+              {data.weather[0].description}
+            </WeatherDescription>
           </div>
-          <div className="parameter-row">
-            <span className="parameter-label border">Feels Like</span>
-            <span className="parameter-value">
-              {Math.round(data.main.feels_like)}°F
-            </span>
-          </div>
-          <div className="parameter-row">
-            <span className="parameter-label border">Wind</span>
-            <span className="parameter-value">
-              {Math.round(data.wind.speed)} Mph
-            </span>
-          </div>
-          <div className="parameter-row">
-            <span className="parameter-label border">Humidity</span>
-            <span className="parameter-value"> {data.main.humidity}%</span>
-          </div>
-          <div className="parameter-row">
-            <span className="parameter-label border">Pressure</span>
-            <span className="parameter-value"> {data.main.pressure} hPa</span>
-          </div>
-        </Details>
-      </Bottom>
-    </Weather>
+          <img
+            alt="weather"
+            className="weather-icon"
+            src={`icons/${data.weather[0].icon}.png`}
+          ></img>
+        </Top>
+        <Bottom>
+          <Temperature>{Math.round(data.main.temp)}°F</Temperature>
+          <Details>
+            <div className="parameter-row">
+              <span className="parameter-label top details">Details</span>
+            </div>
+            <div className="parameter-row">
+              <span className="parameter-label border">Feels Like</span>
+              <span className="parameter-value">
+                {Math.round(data.main.feels_like)}°F
+              </span>
+            </div>
+            <div className="parameter-row">
+              <span className="parameter-label border">Wind</span>
+              <span className="parameter-value">
+                {Math.round(data.wind.speed)} Mph
+              </span>
+            </div>
+            <div className="parameter-row">
+              <span className="parameter-label border">Humidity</span>
+              <span className="parameter-value"> {data.main.humidity}%</span>
+            </div>
+            <div className="parameter-row">
+              <span className="parameter-label border">Pressure</span>
+              <span className="parameter-value"> {data.main.pressure} hPa</span>
+            </div>
+          </Details>
+        </Bottom>
+      </Weather>
+    </Tilt>
   );
 };
 
