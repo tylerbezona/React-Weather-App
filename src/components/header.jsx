@@ -5,33 +5,32 @@ import { WEATHER_API_URL, WEATHER_API_KEY } from "../api";
 import styled from "styled-components";
 
 const HeaderBar = ({ data }) => {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
   const [responseData, setResponseData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     navigator.geolocation.getCurrentPosition(function (position) {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
-    });
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      const finalAPIEndPoint = `${WEATHER_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=imperial`;
 
-    const finalAPIEndPoint = `${WEATHER_API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=${WEATHER_API_KEY}&units=imperial`;
-
-    axios.get(finalAPIEndPoint).then((response) => {
-      setResponseData(response.data);
+      axios.get(finalAPIEndPoint).then((response) => {
+        setIsLoading(false);
+        setResponseData(response.data);
+      });
     });
   }, []);
 
-  const currentCity = JSON.stringify(responseData.name);
-
   console.log(responseData);
-  return (
+
+  return isLoading ? (
+    <div>Loading...</div>
+  ) : (
     <HeaderStyle>
       <HeaderNavInfo>
-        <CurrentCity>{currentCity.slice(1, -1)}</CurrentCity>
-        <CurrentTemp>
-          {JSON.stringify(Math.round(responseData.main.temp))}°F
-        </CurrentTemp>
+        <CurrentCity>{responseData.name}</CurrentCity>
+        <CurrentTemp>{Math.round(responseData.main.temp)}°F</CurrentTemp>
       </HeaderNavInfo>
       <img
         alt="weather"
@@ -62,6 +61,7 @@ const HeaderNavInfo = styled.div`
 `;
 
 const CurrentCity = styled.div`
+  font-weight: 700;
   padding: 5px;
 `;
 
