@@ -62,6 +62,7 @@ export default CurrentWeather;
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  cursor: default;
 `;
 
 const Weather = styled.div`

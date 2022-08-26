@@ -65,4 +65,6 @@ const CurrentCity = styled.div`
   padding: 5px;
 `;
 
-const CurrentTemp = styled.div``;
+const CurrentTemp = styled.div`
+  font-weight: 700;
+`;
