@@ -1,9 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
-import GlobalStyle from "./components/globalStyles";
+import GlobalStyle, { BackgroundImage } from "./components/globalStyles";
 import Search from "./components/search/search";
 import CurrentWeather from "./components/current-weather/current-weather";
 import HeaderBar from "./components/header";
+import Forecast from "./components/Forecast/forecast";
 
 import { WEATHER_API_URL, WEATHER_API_KEY } from "./api";
 
@@ -35,11 +36,14 @@ function App() {
 
   return (
     <Container>
+      <BackgroundImage src="https://images4.alphacoders.com/923/923480.jpg" />
+
       <GlobalStyle />
       <HeaderBar data={currentWeather} />
 
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
+      {forecast && <Forecast data={forecast} />}
     </Container>
   );
 }
@@ -48,5 +52,6 @@ export default App;
 
 const Container = styled.div`
   /* max-width: 1080px; */
+  /* overflow: hidden; */
   margin: 20px auto;
 `;

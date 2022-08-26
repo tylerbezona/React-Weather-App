@@ -4,57 +4,68 @@ import Tilt from "react-parallax-tilt";
 
 const CurrentWeather = ({ data }) => {
   return (
-    <Tilt tiltReverse={true}>
-      <Weather>
-        <Top>
-          <div>
-            <City>{data.city}</City>
-            <WeatherDescription>
-              {data.weather[0].description}
-            </WeatherDescription>
-          </div>
-          <img
-            alt="weather"
-            className="weather-icon"
-            src={`icons/${data.weather[0].icon}.png`}
-          ></img>
-        </Top>
-        <Bottom>
-          <Temperature>{Math.round(data.main.temp)}°F</Temperature>
-          <Details>
-            <div className="parameter-row">
-              <span className="parameter-label top details">Details</span>
+    <Container>
+      <Tilt tiltReverse={true}>
+        <Weather>
+          <Top>
+            <div>
+              <City>{data.city}</City>
+              <WeatherDescription>
+                {data.weather[0].description}
+              </WeatherDescription>
             </div>
-            <div className="parameter-row">
-              <span className="parameter-label border">Feels Like</span>
-              <span className="parameter-value">
-                {Math.round(data.main.feels_like)}°F
-              </span>
-            </div>
-            <div className="parameter-row">
-              <span className="parameter-label border">Wind</span>
-              <span className="parameter-value">
-                {Math.round(data.wind.speed)} Mph
-              </span>
-            </div>
-            <div className="parameter-row">
-              <span className="parameter-label border">Humidity</span>
-              <span className="parameter-value"> {data.main.humidity}%</span>
-            </div>
-            <div className="parameter-row">
-              <span className="parameter-label border">Pressure</span>
-              <span className="parameter-value"> {data.main.pressure} hPa</span>
-            </div>
-          </Details>
-        </Bottom>
-      </Weather>
-    </Tilt>
+            <img
+              alt="weather"
+              className="weather-icon"
+              src={`icons/${data.weather[0].icon}.png`}
+            ></img>
+          </Top>
+          <Bottom>
+            <Temperature>{Math.round(data.main.temp)}°F</Temperature>
+            <Details>
+              <div className="parameter-row">
+                <span className="parameter-label top details">Details</span>
+              </div>
+              <div className="parameter-row">
+                <span className="parameter-label border">Feels Like</span>
+                <span className="parameter-value">
+                  {Math.round(data.main.feels_like)}°F
+                </span>
+              </div>
+              <div className="parameter-row">
+                <span className="parameter-label border">Wind</span>
+                <span className="parameter-value">
+                  {Math.round(data.wind.speed)} Mph
+                </span>
+              </div>
+              <div className="parameter-row">
+                <span className="parameter-label border">Humidity</span>
+                <span className="parameter-value"> {data.main.humidity}%</span>
+              </div>
+              <div className="parameter-row">
+                <span className="parameter-label border">Pressure</span>
+                <span className="parameter-value">
+                  {" "}
+                  {data.main.pressure} hPa
+                </span>
+              </div>
+            </Details>
+          </Bottom>
+        </Weather>
+      </Tilt>
+    </Container>
   );
 };
 
 export default CurrentWeather;
 
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const Weather = styled.div`
+  /* display: inline-block; */
   width: 300px;
   border-radius: 6px;
   box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
@@ -62,6 +73,7 @@ const Weather = styled.div`
   background-color: #333;
   margin: 20px auto 0 auto;
   padding: 0 20px 20px 20px;
+  /* overflow: hidden; */
 `;
 
 const Top = styled.div`
