@@ -25,7 +25,7 @@ const Forecast = ({ data }) => {
   console.log(forecastDays);
   return (
     <Container>
-      <Title>FORECAST</Title>
+      {/* <Title>FORECAST</Title> */}
       <Accordion allowZeroExpanded>
         {data.list.splice(0, 7).map((item, idx) => (
           <AccordionItem key={idx}>
@@ -42,8 +42,7 @@ const Forecast = ({ data }) => {
                     {item.weather[0].description}
                   </label>
                   <label className="min-max">
-                    {Math.round(item.main.temp_min)}°F /
-                    {Math.round(item.main.temp_max)}
+                    {Math.round(item.main.temp_min)}°F
                   </label>
                 </DailyItem>
               </AccordionItemButton>
@@ -86,7 +85,11 @@ const Forecast = ({ data }) => {
 export default Forecast;
 
 const Container = styled.div`
-  opacity: 70%;
+  display: flex;
+  justify-content: center;
+  /* flex-direction: row-reverse; */
+  opacity: 85%;
+  margin-top: 20px;
 `;
 
 const Title = styled.label`
@@ -100,9 +103,11 @@ const Title = styled.label`
 
 const DailyItem = styled.div`
   display: flex;
+  justify-content: center;
+  flex-direction: column;
   /* width: 70%; */
   color: white;
-
+  flex-direction: row;
   align-items: center;
   background-color: #333;
   border-radius: 15px;
@@ -135,7 +140,14 @@ const DailyItem = styled.div`
 `;
 
 const DailyDetailsGrid = styled.div`
-  display: grid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #333;
+
+  /* display: grid;
   grid-row-gap: 0;
   grid-column-gap: 15px;
   column-gap: 15px;
@@ -145,7 +157,7 @@ const DailyDetailsGrid = styled.div`
   pad: 5px 15px;
   background-color: #333;
   border-radius: 15px;
-  padding: 5px;
+  padding: 5px; */
   /* width: 71%; */
 `;
 

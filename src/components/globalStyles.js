@@ -28,6 +28,7 @@ export const BackgroundImage = styled.img`
   top: 0;
   width: 100%;
   object-fit: cover;
+  background-repeat: repeat;
   /* transform: scale(1.01); */
-  overflow: hidden !important;
+  /* overflow: hidden !important; */
 `;

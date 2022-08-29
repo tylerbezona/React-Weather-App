@@ -49,7 +49,7 @@ const HeaderStyle = styled.div`
   align-items: center;
   background-color: transparent;
   padding: 15px;
-
+  color: white;
   .weather-icon {
     width: 50px;
   }
