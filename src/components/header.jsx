@@ -22,7 +22,7 @@ const HeaderBar = ({ data }) => {
     });
   }, []);
 
-  console.log(responseData);
+  // console.log(responseData);
 
   return isLoading ? (
     <div>Loading...</div>

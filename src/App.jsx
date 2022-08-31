@@ -32,7 +32,7 @@ function App() {
       .catch((err) => console.log(err));
   };
   // console.log(currentWeather);
-  // console.log(forecast);
+  console.log(forecast);
 
   return (
     <Container>

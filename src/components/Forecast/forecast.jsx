@@ -23,11 +23,12 @@ const Forecast = ({ data }) => {
     .concat(weekDays.slice(0, dayInAWeek));
 
   console.log(forecastDays);
+
   return (
     <Container>
       {/* <Title>FORECAST</Title> */}
       <Accordion allowZeroExpanded>
-        {data.list.splice(0, 7).map((item, idx) => (
+        {data.list.splice(0, 5).map((item, idx) => (
           <AccordionItem key={idx}>
             <AccordionItemHeading>
               <AccordionItemButton>
@@ -42,7 +43,7 @@ const Forecast = ({ data }) => {
                     {item.weather[0].description}
                   </label>
                   <label className="min-max">
-                    {Math.round(item.main.temp_min)}°F
+                    {Math.round(item.main.temp_max)}°F
                   </label>
                 </DailyItem>
               </AccordionItemButton>
@@ -92,18 +93,9 @@ const Container = styled.div`
   margin-top: 20px;
 `;
 
-const Title = styled.label`
-  display: flex;
-  justify-content: center;
-  margin-top: 5px;
-  font-size: 30px;
-  font-weight: 900;
-  color: #333;
-`;
-
 const DailyItem = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: end;
   flex-direction: column;
   /* width: 70%; */
   color: white;
@@ -129,7 +121,7 @@ const DailyItem = styled.div`
 
   .description {
     flex: 1 1;
-    margin-right: 15px;
+    margin-right: 10px;
     text-align: right;
     color: white;
   }
